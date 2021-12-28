@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Potato Head Game</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" type="image/png" href="images/icon.png" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <style>
+    @font-face {
+      font-family: Potato;
+      src: url(GrinchedRegular.otf);
+    }
+
+    h1 {
+      font-family: Potato;
+      font-size: 60px;
+      margin-top: 90px;
+    }
+
+    .header {
+      margin-top: -50px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .potato {
+      height: 150px;
+      width: auto;
+      transform: translateY(35%);
+      display: flex;
+      margin-top: -10px;
+    }
+
+    #potato-parts {
+      margin-top: 10px;
+      padding-top: 5%;
+      border-style: solid;
+      cursor: pointer;
+    }
+
+    .button {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 570px) {
+      h1 {
+        margin-top: 50px;
+      }
+    }
+  </style>
+  <body>
+    <div class="header">
+      <h1>Potato Head Game!</h1>
+      <img class="potato" src="images/icon.png" />
+    </div>
+
+    <div id="potato-parts">
+      <img class="parts" src="images/potato-parts/arm1.png" />
+      <img class="parts" src="images/potato-parts/arm2.png" />
+      <img class="parts" src="images/potato-parts/body.png" />
+      <img class="parts" src="images/potato-parts/brows.png" />
+      <img class="parts" src="images/potato-parts/ear1.png" />
+      <img class="parts" src="images/potato-parts/ear2.png" />
+      <img class="parts" src="images/potato-parts/eye1.png" />
+      <img class="parts" src="images/potato-parts/eye2.png" />
+      <img class="parts" src="images/potato-parts/hat.png" />
+      <img class="parts" src="images/potato-parts/mouth.png" />
+      <img class="parts" src="images/potato-parts/nose.png" />
+      <img class="parts" src="images/potato-parts/shoes.png" />
+      <img class="parts" src="images/potato-parts/stash.png" />
+    </div>
+    <br />
+
+    <div class="container" style="text-align: center">
+      <button onclick="dl();">Download creation as PNG</button>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.3/html2canvas.min.js"></script>
+    <script type="text/javascript">
+      $(drag);
+
+      function drag() {
+        $(".parts").draggable();
+      }
+
+      function dl() {
+        html2canvas(document.getElementById("potato-parts")).then(function (
+          canv
+        ) {
+          var link = document.createElement("a");
+          link.setAttribute("download", "my_creation.png");
+          var url = canv
+            .toDataURL("image/png", 1.0)
+            .replace(/^data:image\/png/, "data:application/octet-stream");
+          link.setAttribute("href", url);
+          link.click();
+        });
+      }
+    </script>
+  </body>
+</html>
